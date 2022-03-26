@@ -11,15 +11,15 @@ public class TicTacToe {
     current = p1;
   }
 
-  public String play(int index) throws Exception {
+  public String play(int index) {
     if (!board.isPlayable()) {
-      throw new Exception("The game is over!");
+      return "The game is over!";
     } else if (index < 1 || index > 9) {
-      throw new Exception("This is not a playable move!");
+      return "This is not a playable move!";
     }
     boolean move = current.place(board, index);
     if (!move) {
-      throw new Exception("This is not a playable move!");
+      return "This is not a playable move!";
     }
     if (current == p1) {
       current = p2;
@@ -35,7 +35,6 @@ public class TicTacToe {
     if (firstMsg) {
       firstMsg = false;
       return "Welcome to TicTacToe! \n" + boardStr;
-
     }
     else if (!board.isPlayable()) {
       Player p = board.getWinner();
